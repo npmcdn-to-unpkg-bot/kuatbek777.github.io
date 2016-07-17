@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<link href="css/main.css" rel="stylesheet" type="text/css">
+<script src="http://d3js.org/d3.v3.min.js"></script>
+</head>
+<body>
+
+<p style="text-align:center;">The transition example</p>
+
+<script>
+	var canWidth = 1200;
+	var canHeight = 500;
+
+	
+	var canvas = d3.select("body")
+				.append("svg")
+				.attr("width",canWidth)
+				.attr("height",canHeight);
+	var circle = canvas.append("circle")
+					.attr("cx", 300)
+					.attr("cy", 200)
+					.attr("r", 150)
+					.attr("fill", "#331144")
+					.on("mouseover", handleMouseOver);
+	
+
+		
+		function handleMouseOver() {
+		
+	var yRandom = 150 + Math.random() * 200;
+	var xRandom = 150 + Math.random() * 900;
+	var rRandom = 10 + Math.random()*140;	
+		circle.transition()
+		.duration(2000)
+		.attr("cx", xRandom)
+		.attr("cy", yRandom)
+		.attr("r", rRandom)
+		.attr("fill", getRandomColor());
+          }	
+		  
+		  function getRandomColor() {
+    var letters = '0123456789ABCDEF'.split('');
+    var color = '#';
+    for (var i = 0; i < 6; i++ ) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
+		  
+</script>
+
+</body>
+</html>

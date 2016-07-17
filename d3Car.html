@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="http://d3js.org/d3.v4.min.js"></script>
+</head>
+<body>
+<script>
+	var canvas = d3.select("body")
+				.append("svg")
+				.attr("width",900)
+				.attr("height",500);
+	var circle1 = canvas.append("circle")
+					.attr("cx",250)
+					.attr("cy",350)
+					.attr("r", 50)
+					.attr("fill", "purple");
+					
+	var circle2 = canvas.append("circle")
+					.attr("cx",650)
+					.attr("cy",350)
+					.attr("r", 50)
+					.attr("fill", "purple");
+	
+	var rect = canvas.append("rect")
+					.attr("x",100)
+					.attr("y",250)
+					.attr("width",700)
+					.attr("height",100)
+					.attr("fill", "#445566");			
+</script>
+
+
+</body>
+</html>
