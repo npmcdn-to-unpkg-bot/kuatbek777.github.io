@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<link href="css/main.css" rel="stylesheet" type="text/css">
+<script src="d3/d3.min.js"></script>
+</head>
+<body>
+
+<p style="text-align:center;">The monthly average temperature for Ulsan (from 1981 to 2010)</p>
+
+<script>
+	var temperature = [
+	{name:"January", temp:2},
+	{name:"February", temp:3.9},
+	{name:"March", temp:7.9},
+	{name:"April", temp:13.5},
+	{name:"May", temp:17.9},
+	{name:"June", temp:21.4},
+	{name:"July", temp:25},
+	{name:"August", temp:25.9},
+	{name:"September", temp:21.5},
+	{name:"October", temp:16.2},
+	{name:"Novermber", temp:9.9},
+	{name:"December", temp:4.3},
+	];
+	var canHeight = 400;
+	var canWidth = 1200;
+	
+	var heightScale = d3.scale.linear()
+					.domain([0, 25.9])
+					.range([0, canHeight - 50]);
+	var heightScaleReverse = d3.scale.linear()
+					.domain([0, 25.9])
+					.range([canHeight-30, 0]);
+					
+	var colorScale = d3.scale.linear()
+					.domain([0, 25.9])
+					.range(["green","red"]);
+					
+	var yAxis = d3.svg.axis().scale(heightScaleReverse).orient("left").ticks(10);
+	
+	var canvas = d3.select("body")
+				.append("svg")
+				.attr("width",canWidth)
+				.attr("height",canHeight)
+				.append("g")
+				.attr("transform", "translate(40,0)");
+				
+	var bars = canvas.selectAll("rect")
+				.data(temperature)
+				.enter()
+					.append("rect")
+					.attr("width", 50)
+					.attr("height", function(d) {return heightScale(d.temp);})
+					.attr("x", function(d, i) {return i * 100;})
+					.attr("y", function(d) {return canHeight-30- heightScale(d.temp);})
+					.attr("fill", function(d) {return colorScale(d.temp)});
+					
+	var text = canvas.selectAll("text")
+				.data(temperature)
+				.enter()
+					.append("text")
+					.attr("fill", "black")
+					.attr("x", function(d, i) {return i * 100;})
+					.attr("y", function(d) {return canHeight - 10;})
+					.text(function(d) {return d.name});
+					
+	canvas.append("g")
+		.call(yAxis);
+		
+
+</script>
+</body>
+</html>
