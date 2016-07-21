@@ -9,16 +9,29 @@
 <p style="text-align:center;">The monthly average temperature for Ulsan (from 1981 to 2010)</p>
 
 <script>
-	var temperature = [2, 3.9, 7.9, 13.5, 17.9, 21.4, 25, 25.9, 21.5, 16.2, 9.9, 4.3];
+	var temperature = [
+	{name:"January", temp:2},
+	{name:"February", temp:3.9},
+	{name:"March", temp:7.9},
+	{name:"April", temp:13.5},
+	{name:"May", temp:17.9},
+	{name:"June", temp:21.4},
+	{name:"July", temp:25},
+	{name:"August", temp:25.9},
+	{name:"September", temp:21.5},
+	{name:"October", temp:16.2},
+	{name:"Novermber", temp:9.9},
+	{name:"December", temp:4.3},
+	];
 	var canHeight = 400;
 	var canWidth = 1200;
 	
 	var heightScale = d3.scale.linear()
 					.domain([0, 25.9])
-					.range([0, canHeight]);
+					.range([0, canHeight - 50]);
 	var heightScaleReverse = d3.scale.linear()
 					.domain([0, 25.9])
-					.range([canHeight, 0]);
+					.range([canHeight-30, 0]);
 					
 	var colorScale = d3.scale.linear()
 					.domain([0, 25.9])
@@ -38,21 +51,24 @@
 				.enter()
 					.append("rect")
 					.attr("width", 50)
-					.attr("height", function(d) {return heightScale(d);})
+					.attr("height", function(d) {return heightScale(d.temp);})
 					.attr("x", function(d, i) {return i * 100;})
-					.attr("y", function(d) {return canHeight - heightScale(d);})
-					.attr("fill", function(d) {return colorScale(d)});
+					.attr("y", function(d) {return canHeight-30- heightScale(d.temp);})
+					.attr("fill", function(d) {return colorScale(d.temp)});
+					
+	var text = canvas.selectAll("text")
+				.data(temperature)
+				.enter()
+					.append("text")
+					.attr("fill", "black")
+					.attr("x", function(d, i) {return i * 100;})
+					.attr("y", function(d) {return canHeight - 10;})
+					.text(function(d) {return d.name});
+					
 	canvas.append("g")
 		.call(yAxis);
+		
+
 </script>
-
-<table id="t01">
-<tr>
-<td>January  </td><td>February </td><td>March    </td><td>April    </td><td>May      </td><td>June     </td><td>July     </td><td>August   </td><td>September</td><td>October  </td><td>November </td><td>December </td>
-</tr>
-</table>
-
-
-
 </body>
 </html>
