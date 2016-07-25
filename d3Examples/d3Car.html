@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="d3/d3.min.js"></script>
+</head>
+<body style="text-align:center;">
+<script>
+	var canvas = d3.select("body")
+				.append("svg")
+				.attr("width",900)
+				.attr("height",500);
+	var circle1 = canvas.append("circle")
+					.attr("cx",250)
+					.attr("cy",350)
+					.attr("r", 50)
+					.attr("fill", "purple");
+					
+	var circle2 = canvas.append("circle")
+					.attr("cx",650)
+					.attr("cy",350)
+					.attr("r", 50)
+					.attr("fill", "purple");
+	
+	var rect = canvas.append("rect")
+					.attr("x",100)
+					.attr("y",250)
+					.attr("width",700)
+					.attr("height",100)
+					.attr("fill", "#445566");
+	var data_line = [
+					{x: 250, y: 250},
+					{x: 300, y: 180},
+					{x: 600, y: 180},
+					{x: 650, y: 250}
+					];
+	var line = d3.svg.line()
+	.x(function(d) {return d.x;})
+	.y(function(d) {return d.y;});
+	
+	canvas.selectAll("path")
+			.data([data_line])
+			.enter()
+			.append("path")
+			.attr("d", line)
+			.attr("fill", "none")
+			.attr("stroke", "#334455")
+			.attr("stroke-width", 2);
+
+					
+</script>
+
+
+</body>
+</html>
