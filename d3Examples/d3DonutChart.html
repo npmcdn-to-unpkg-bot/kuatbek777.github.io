@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<link href="css/css_d3Examples.css" rel="stylesheet" type="text/css">
+<script src="d3/d3.min.js"></script>
+</head>
+<body>
+<h1>The Donut Chart</h1>
+<script>
+var data = [46.5, 22.8, 18.3,10.9, 1.7];
+var data_religion_name = ["No formal religion", "Korean Buddhism", "Protestantism", "Roman Catholicism", "Other religions"];
+var r = 280;
+var color = d3.scale.ordinal()
+			.range (["#333366","#ffff66","#660033", "#990033", "#999966"]);
+
+var canvas = d3.select("body").append("svg")
+					.attr("width", 800)
+					.attr("height", 600);
+					
+var group = canvas.append("g")
+				.attr("transform", "translate(300,300)");
+				
+var arc = d3.svg.arc()
+			.innerRadius(r - 100)
+			.outerRadius(r);
+			
+var pie = d3.layout.pie()
+			.value(function (d) {return d;});
+			
+var arcs = group.selectAll(".arc")
+			.data(pie(data))
+			.enter()
+			.append("g")
+			.attr("class", "arc");
+			
+var show_arc = arcs.append("path")
+			.attr("d", arc)
+			.attr("fill", function(d){return color(d.data);});
+var text = arcs.append("text")
+			.attr("transform", function(d) {return "translate("+ arc.centroid(d) + ")";})
+			.attr("text-anchor", "middle")
+			.attr("font-size", "1em")
+			.text(function (d) {return d.data + "%";});
+			
+var group_text = canvas.append("g")
+				.attr("transform", "translate(600,10)");
+				
+var religion_name_background = group_text.append("rect")
+    .attr("width", "180")
+    .attr("height", "170")
+    .attr("fill", "#cccccc");
+				
+var text_religion_name = group_text.selectAll("text")
+				.data(data_religion_name)
+				.enter()
+					.append("text")
+					.attr("fill", function(d){return color(d);})
+					.style("font-weight", "bold")
+					.attr("y", function(d, i) {return i * 30 + 30;})
+					.attr("x", 20)
+					.text(function(d) {return d});
+					
+
+		
+</script>
+</body>
+</html>
