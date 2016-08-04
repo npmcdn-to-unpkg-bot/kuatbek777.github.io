@@ -8,13 +8,13 @@
 <h1>The template</h1>
 <script>
 	var canvas = d3.select("body").append("svg")
-                        .attr("width", 500)
-                        .attr("height", 500)
+                        .attr("width", 800)
+                        .attr("height", 800)
                         .append("g")
                             .attr("transform", "translate(50,50)");
         
         var tree = d3.layout.tree()
-                    .size([400, 400]);
+                    .size([600, 600]);
 
         d3.json("json_file/tree.json", function(data) {
 
