@@ -1,19 +1,27 @@
 {
- "name": "Max",
+ "name": "Operating systems",
  "children": [
   {
-    "name": "Sylvia",
+    "name": "Microsoft Windows",
     "children": [
-        {"name": "Craig"},
-        {"name": "Robin"},
-        {"name": "Anna"}
+        {"name": "Windows 98"},
+        {"name": "Windows 2000"},
+        {"name": "Windows XP"},
+		{"name": "Windows 7"},
+		{"name": "Windows 8"},
+		{"name": "Windows 10"},
     ]
   },
   {
-    "name": "David",
+    "name": "Mac OS",
     "children": [
-        {"name": "Jeff"},
-        {"name": "Buffy"}
+        {"name": "OS X"},
+    ]
+  },
+  {
+    "name": "Linux",
+    "children": [
+        {"name": "Ubuntu"},
     ]
   }
  ]
