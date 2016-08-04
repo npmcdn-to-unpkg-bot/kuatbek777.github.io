@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<link href="css/css_d3Examples.css" rel="stylesheet" type="text/css">
+<script src="d3/d3.min.js"></script>
+</head>
+<body>
+<h1>My Heart</h1>
+<script>
+	
+	var r = 125;
+	
+	var canvas = d3.select("body").append("svg")
+				.attr("width", 500)
+				.attr("height", 525);
+	
+	var group_left = canvas.append("g")
+				.attr("transform", "translate(125, 125)");
+	
+	var group_right = canvas.append("g")
+				.attr("transform", "translate(375, 125)");
+				
+	var left_bottom = d3.svg.diagonal()
+				.source({x:0, y:125 })
+				.target({x:250, y:525 });
+	var right_bottom = d3.svg.diagonal()
+				.source({x:500, y:125 })
+				.target({x:250, y:525 });
+	
+	var left_upper = d3.svg.arc()
+				.innerRadius(r)
+				.outerRadius(r)
+				.startAngle(-0.5 * Math.PI)
+				.endAngle(0.5 * Math.PI);
+	var right_upper = d3.svg.arc()
+				.innerRadius(r)
+				.outerRadius(r)
+				.startAngle(-0.5 * Math.PI)
+				.endAngle(0.5 * Math.PI);
+	
+	var draw_left_bottom = canvas.append("path")
+						.attr("fill", "none")
+						.attr("stroke", "red")
+						.attr("d", left_bottom);
+						
+	var draw_right_bottom = canvas.append("path")
+						.attr("fill", "none")
+						.attr("stroke", "red")
+						.attr("d", right_bottom);
+						
+	var draw_left_upper = group_left.append("path")
+						.attr("fill", "none")
+						.attr("stroke", "red")
+						.attr("d", left_upper);
+	
+	var draw_right_upper = group_right.append("path")
+						.attr("fill", "none")
+						.attr("stroke", "red")
+						.attr("d", right_upper);
+	
+</script>
+
+
+</body>
+</html>
