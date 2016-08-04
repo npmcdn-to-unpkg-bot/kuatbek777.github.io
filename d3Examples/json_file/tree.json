@@ -15,13 +15,13 @@
   {
     "name": "Mac OS",
     "children": 
-        {"name": "OS X"}
+        [{"name": "OS X"}]
     
   },
   {
     "name": "Linux",
     "children": 
-        {"name": "Ubuntu"}
+        [{"name": "Ubuntu"}]
     
   }
  ]
