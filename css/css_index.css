@@ -46,16 +46,16 @@ h8{
     margin-left: 30px;
 
 	color: #fffccc;
-	padding: 110px;
+	padding: 50px;
 	background: #6622cc;
-	border-radius: 300px;
+	border-radius: 100px;
 	border: 10px solid #ffffff;
 	
 	}
 	
 	h8:hover{
 	display: block;
-    font-size: 30;
+    font-size: 60;
     margin-top: 20px;
     margin-bottom: 20px;
     margin-right: 30px;
