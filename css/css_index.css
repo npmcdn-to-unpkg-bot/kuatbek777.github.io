@@ -39,16 +39,16 @@ h7{
 
 h8{
 	display: block;
-    font-size: 50;
-    margin-top: 5px;
-    margin-bottom: 5px;
+    font-size: 25;
+    margin-top: 20px;
+    margin-bottom: 20px;
 	margin-left: 150px;
 	margin-right: 150px;
-	color: #ffffff;
-	padding: 10px;
+	color: #fffccc;
+	padding: 40px;
 	background: #6622cc;
-	border-radius: 50px;
-	border: 0px solid #ffffff;
+	border-radius: 100px;
+	border: 2px solid #ffffff;
 	
 	}
 	
